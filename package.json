@@ -10,6 +10,11 @@
     "Formatters", "Other"
   ],
   "publisher": "AbeCAOS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/y-abe-c/unixtimeconverter.git"
+  },
+  "icon": "images/icon.png",
   "activationEvents": ["onLanguage"],
   "main": "./dist/extension.js",
   "contributes": {
