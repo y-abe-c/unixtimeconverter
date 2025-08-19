@@ -1,6 +1,13 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
+
+
+	// 設定の取得
+	const config = vscode.workspace.getConfiguration('UnixTimeConveter');
+	const int_threshold = config.get<number>('threshold', 1e9);
+
+
 	/**
 	 * Hover Provider: マウスオーバーでUnix時刻を日時に変換して表示
 	 */
@@ -14,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			const [intPartStr, fracPart] = text.split('.');
 			const intPart = Number(intPartStr);
-			if (!Number.isFinite(intPart) || intPart < 1e9) return;
+			if (!Number.isFinite(intPart) || intPart < int_threshold) return;
 
 			// 秒単位 or ミリ秒単位の判定
 			const date = new Date(intPart < 1e12 ? intPart * 1000 : intPart);
@@ -43,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 		while ((match = unixRegex.exec(text)) !== null) {
 			const [intPartStr, fracPart] = match[0].split('.');
 			const intPart = Number(intPartStr);
-			if (!Number.isFinite(intPart) || intPart < 1e9) continue;
+			if (!Number.isFinite(intPart) || intPart < int_threshold) continue;
 
 			const date = new Date(intPart < 1e12 ? intPart * 1000 : intPart);
 			const jst = formatDateWithFraction(date, fracPart);
@@ -88,7 +95,7 @@ export function activate(context: vscode.ExtensionContext) {
 			while ((match = unixRegex.exec(selectedText)) !== null) {
 				const [intPartStr, fracPart] = match[0].split('.');
 				const intPart = Number(intPartStr);
-				if (!Number.isFinite(intPart) || intPart < 1e9) continue;
+				if (!Number.isFinite(intPart) || intPart < int_threshold) continue;
 
 				const date = new Date(intPart < 1e12 ? intPart * 1000 : intPart);
 				const jst = formatDateWithFraction(date, fracPart);

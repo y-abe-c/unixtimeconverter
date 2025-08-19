@@ -7,7 +7,8 @@
     "vscode": "^1.103.0"
   },
   "categories": [
-    "Formatters", "Other"
+    "Formatters",
+    "Other"
   ],
   "publisher": "AbeCAOS",
   "repository": {
@@ -15,11 +16,21 @@
     "url": "https://github.com/y-abe-c/unixtimeconverter.git"
   },
   "icon": "images/icon.png",
-  "activationEvents": ["onLanguage"],
+  "activationEvents": [
+    "onLanguage"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "languages": [
-      { "id": "plaintext", "aliases": ["Plain Text"], "extensions": [".txt"] }
+      {
+        "id": "plaintext",
+        "aliases": [
+          "Plain Text"
+        ],
+        "extensions": [
+          ".txt"
+        ]
+      }
     ],
     "commands": [
       {
@@ -44,6 +55,16 @@
           "group": "navigation@2"
         }
       ]
+    },
+    "configuration": {
+      "title": "UnixTimeConveterSettings",
+      "properties": {
+        "UnixTimeConveter.threshold": {
+          "type": "number",
+          "default": 1000000000,
+          "description": "unix時間として認識する数値の閾値"
+        }
+      }
     }
   },
   "scripts": {
@@ -58,7 +79,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.102.0",
+    "@types/vscode": "^1.103.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
