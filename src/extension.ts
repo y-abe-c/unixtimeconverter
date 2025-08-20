@@ -5,8 +5,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// 設定の取得
 	const config = vscode.workspace.getConfiguration('UnixTimeConveter');
-	const int_threshold = config.get<number>('threshold', 1e9);
-
+	// const int_threshold = config.get<number>('threshold', 1e9);
+	const int_threshold = 1000000000;
 
 	/**
 	 * Hover Provider: マウスオーバーでUnix時刻を日時に変換して表示
