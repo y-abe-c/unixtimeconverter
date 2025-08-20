@@ -59,10 +59,10 @@
     "configuration": {
       "title": "UnixTimeConveterSettings",
       "properties": {
-        "UnixTimeConveter.threshold": {
+        "unixtimeconverter.threshold": {
           "type": "number",
           "default": 1000000000,
-          "description": "unix時間として認識する数値の閾値"
+          "description": "unix時間として認識する数値の閾値（変更後は再起動必要）"
         }
       }
     }

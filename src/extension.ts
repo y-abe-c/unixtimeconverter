@@ -4,9 +4,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 	// 設定の取得
-	const config = vscode.workspace.getConfiguration('UnixTimeConveter');
-	// const int_threshold = config.get<number>('threshold', 1e9);
-	const int_threshold = 1000000000;
+	const config = vscode.workspace.getConfiguration('unixtimeconverter');
+	const int_threshold = config.get<number>('threshold', 1e9);
+	// const int_threshold = 1000000000;
 
 	/**
 	 * Hover Provider: マウスオーバーでUnix時刻を日時に変換して表示
@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 			const date = new Date(intPart < 1e12 ? intPart * 1000 : intPart);
 
 			const jst = formatDateWithFraction(date, fracPart);
-			const utc = formatDateWithFraction(new Date(date.getTime() - date.getTimezoneOffset() * 60000), fracPart, true);
+			// const utc = formatDateWithFraction(new Date(date.getTime() - date.getTimezoneOffset() * 60000), fracPart, true);
 
 			return new vscode.Hover(`🕒 **JST:** ${jst}`);
 		}
